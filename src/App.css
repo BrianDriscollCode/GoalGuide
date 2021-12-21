@@ -1,38 +1,141 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  height: 100vh;
+  margin: 0;
+  
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  margin: 0;
+  background-color: chocolate;
+}
+
+.Header {
+  margin: 0;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+}
+
+.Sub-header {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 10px 0 20px 0;
+
+}
+.Main-content {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  background-color: cadetblue;
+  height: 75vh;
 }
 
 .App-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* 1st row header */
+/* Parent: Header*/
+
+#Goal-guide-title {
+  font-size: 30px;
+  margin: 0;
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-right: 13px;
+  background-color: chocolate;
+  width: auto;
 }
+
+#Progress-bar {
+  margin: 0;
+  padding-left: 5px;
+  padding-top: 5px;
+  background-color: chocolate;
+  width: 90%;
+  display: flex;
+  justify-content: row;
+}
+
+#Progress-bar p {
+  align-self: center;
+  padding-right: 20px;
+}
+
+#Progress-bar-image {
+  align-self: center;
+  height:30px;
+  width: 80%;
+  background-color: rgb(0, 100, 62);
+  border: 1px solid green;
+  display: flex;
+
+}
+
+#Progress-bar-filling {
+  align-self: center;
+    width: 30%;
+    height:25px;
+    background-color: rgb(126, 233, 99);
+}
+
+/* 2nd row header */
+/* Parent: Sub-header*/
+
+#Category {
+  background-color: chocolate;
+  width: 35%;
+  display: flex;
+  flex-direction: row;
+}
+
+#Week {
+  background-color: chocolate;
+  width: 15%;
+  display: flex;
+  flex-direction: row;
+}
+/*  Main Content  */
+
+.weekTitle {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(158, 234, 236);
+}
+
+.Goals {
+  margin: 0px 10px 0px 10px;
+  width: 11%;
+}
+
+.goalTitle {
+  display: flex;
+  flex-direction: row
+}
+
+.goalTitle button {
+  height: 80%;
+  width: 40px;
+  align-self: center;
+  margin-left: 30px;
+
+}
+
+.Goal-box {
+  background-color: chartreuse;
+}
+
+.Goal-box ul {
+    list-style-type: none;
+    display: table; 
+    margin: 0 auto;
+    text-align: left;
+    padding: 0 0 0 0;
+}
+
+.Goal-box li {
+  display: table;
+}
+
+
+
+
