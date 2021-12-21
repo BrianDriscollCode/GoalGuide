@@ -8,30 +8,30 @@ class App extends React.Component {
   constructor() {
     super();
 
-    this.state = {week: true}
+    this.state = {
+      
+      week: false,
+      category: 'Business'
+    }
 
     this.chooseWeek = this.chooseWeek.bind(this);
     this.chooseWeek2 = this.chooseWeek2.bind(this);
+    this.changeCategory = this.changeCategory.bind(this);
   }
-  
-  chooseWeek() {
 
-    this.setState({
-      week: true
-    });
-    console.log(this.state.week, "chooseWeek1");
+  chooseWeek() {
+    this.setState({week: true});
   }
 
   chooseWeek2() {
-    this.setState({
-      week: false
-    });
+    this.setState({week: false});
+  }
 
-    console.log(this.state.week, "chooseWeek2");
+  changeCategory(event) {
+    this.setState({category: event.target.value}); 
   }
 
   render() {
-
     return (
     <div className="App">
       <header className="App-header"> 
@@ -54,11 +54,12 @@ class App extends React.Component {
           <section class="Sub-header">
               <div id="Category">
                 <p> Category: </p>
-                <select name="cars" id="cars">
+               
+                <select name="cars" id="category" onChange={this.changeCategory} value={this.state.category}>
                     <option value="Business">Business</option>
                     <option value="Fitness">Fitness</option>
                     <option value="Pixel Art">Pixel Art</option>
-                   </select>
+                </select>
                 <button> + </button>
                 <button> - </button>
                 {/* dropdown menu*/}
@@ -75,10 +76,10 @@ class App extends React.Component {
 
       </header>
 
-      {
+      
 
-        <Schedule week={this.state} />
-      }
+      <Schedule week={this.state.week} category={this.state.category} />
+      
       
     </div>
 
