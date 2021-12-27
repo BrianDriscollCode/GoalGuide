@@ -1,0 +1,10 @@
+1. Click component and activate 
+input field based on target event
+
+2. enter input
+
+3. Pass event.target.value into state and pass
+to app.js 
+
+4. Change parent value and send prop back down to 
+change value. 

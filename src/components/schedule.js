@@ -10,18 +10,28 @@ class Schedule extends React.Component {
         this.createInputField = this.createInputField.bind(this);
     }
 
+    //click on list items and change inputs
     createInputField(event) {
-      console.log(<h5> fdasf </h5>);
+      let input = document.createElement("INPUT");      
+      input.value = event.target.textContent;
+      input.setAttribute("onkeypress", 'this.listItemInput');
+      event.target.replaceWith(input);
+    }
 
-      let array = [<h3> diasjfs </h3>];
-      
-      event.target.replaceWith(array);
-      
+    listItemInput(event) {
+      let listItem = document.createElement("LI");
+      console.log('run list item input');
+
+      // if (event.key == "Enter") {
+      //   listItem.textContent = event.target.value;
+      //   event.target.replaceWith(listItem);
+      // }
     }
     
     render () {
 
 
+      document.createElement('p');
 
         return (
           <main>
@@ -37,18 +47,17 @@ class Schedule extends React.Component {
             <div className="Monday Goals">
 
               <div className="goalTitle">
-                <h3> Monday </h3>
-                <button> + </button>
+                  <h3> Monday </h3>
+                  <button> + </button>
               </div>
-              
 
               <div className="Goal-box">
 
-                <ul>
-                  <li onClick={this.createInputField}> List item 1 </li>
-                  <li onClick={this.createInputField}> List item 2 </li>
-                  <li onClick={this.createInputField}> List item 3 </li>
-                </ul>
+                  <ul>
+                      <li onClick={this.createInputField}> List item 1 </li>
+                      <li onClick={this.createInputField}> List item 2 </li>
+                      <li onClick={this.createInputField}> List item 3 </li>
+                  </ul>
 
               </div>
 
@@ -60,7 +69,6 @@ class Schedule extends React.Component {
                 <h3> Tuesday </h3>
                 <button> + </button>
               </div>
-              
 
                 <div className="Goal-box">
 
@@ -68,7 +76,6 @@ class Schedule extends React.Component {
                     <li> List item 1 </li>
                     <li> List item 2 </li>
                     <li> List item 3 </li>
-                    {}
                   </ul>
 
                 </div>

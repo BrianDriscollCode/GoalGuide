@@ -16,7 +16,7 @@ class App extends React.Component {
 
     this.chooseWeek = this.chooseWeek.bind(this);
     this.chooseWeek2 = this.chooseWeek2.bind(this);
-    this.changeCategory = this.changeCategory.bind(this);
+    this.changeCategory = this.changeCategory.bind(this); 
   }
 
   chooseWeek() {
@@ -75,9 +75,9 @@ class App extends React.Component {
           </section>
 
       </header>
-
       
-
+      
+      
       <Schedule week={this.state.week} category={this.state.category} />
       
       
