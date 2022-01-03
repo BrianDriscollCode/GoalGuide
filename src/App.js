@@ -7,16 +7,18 @@ import Schedule from "./components/schedule"
 class App extends React.Component {
   constructor() {
     super();
-
+    
     this.state = {
-      
+  
       week: false,
       category: 'Business'
+    
     }
 
     this.chooseWeek = this.chooseWeek.bind(this);
     this.chooseWeek2 = this.chooseWeek2.bind(this);
     this.changeCategory = this.changeCategory.bind(this); 
+
   }
 
   chooseWeek() {
