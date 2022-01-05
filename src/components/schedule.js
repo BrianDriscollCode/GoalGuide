@@ -1,5 +1,8 @@
 import React from "react";
 
+//component imports
+import AddToList from "./addToList";
+
 
 class Schedule extends React.Component {
     constructor(props) {
@@ -30,10 +33,12 @@ class Schedule extends React.Component {
         }
 
         //this.createInputField = this.createInputField.bind(this);
-       
+       // this.addListItem = this.addListItem.bind(this);
     }
 
-    
+    addListItem(event) {
+      console.log(event.target)
+    }
 
 
     handleListEdit(event, name) {
@@ -54,12 +59,17 @@ class Schedule extends React.Component {
       console.log(this.state.weekItems)
     }
 
-    handleOnEnter(event) {
+    handleOnEnter(event, name) {
 
       //console.log("ENTER", event);
 
-      if (event.charCode === 13) {
-        console.log('WOOT')
+      if (event.key === 'Enter') {
+        console.log(event.target);
+        this.setState((prevState) => ({
+          weekItems: prevState.weekItems.map((item) =>
+            item.name === name ? {...item, name: event.target.value, isEditing: !item.isEditing } : item
+          ),
+        }))
       }
 
     }
@@ -69,8 +79,11 @@ class Schedule extends React.Component {
 
       let listItemWeek1 = this.state.weekItems.map(items => {
 
-        if (items.type === 'week1') {
-          return <li> {items.name} </li> 
+        if (items.type === 'week1' && items.isEditing === false) {
+          return <li onClick={ (e) => this.handleListEdit(e, items.name) }> {items.name} </li>
+        } 
+        else if (items.type === 'week1' && items.isEditing === true) {
+          return <input class="listInput" onKeyUp={ (e) => this.handleOnEnter(e, items.name)} defaultValue={items.name} /> 
         }
       
       })
@@ -81,47 +94,62 @@ class Schedule extends React.Component {
           return <li onClick={ (e) => this.handleListEdit(e, items.name) }> {items.name} </li>
         } 
         else if (items.type === 'week2' && items.isEditing === true) {
-          return <input onKeyUp={ (e) => this.handleOnEnter(e)} defaultValue={items.name} /> 
+          return <input class="listInput" onKeyUp={ (e) => this.handleOnEnter(e, items.name)} defaultValue={items.name} /> 
         }
         
       })
 
       let listItemWeek3 = this.state.weekItems.map(items => {
 
-        if (items.type === 'week3') {
-          return <li> {items.name} </li>
+        if (items.type === 'week3' && items.isEditing === false) {
+          return <li onClick={ (e) => this.handleListEdit(e, items.name) }> {items.name} </li>
+        } 
+        else if (items.type === 'week3' && items.isEditing === true) {
+          return <input class="listInput" onKeyUp={ (e) => this.handleOnEnter(e, items.name)} defaultValue={items.name} /> 
         }
         
       })
 
       let listItemWeek4 = this.state.weekItems.map(items => {
 
-        if (items.type === 'week4') {
-          return <li> {items.name} </li>
+        if (items.type === 'week4' && items.isEditing === false) {
+          return <li onClick={ (e) => this.handleListEdit(e, items.name) }> {items.name} </li>
+        } 
+        else if (items.type === 'week4' && items.isEditing === true) {
+          return <input class="listInput" onKeyUp={ (e) => this.handleOnEnter(e, items.name)} defaultValue={items.name} /> 
         }
         
       })
 
       let listItemWeek5 = this.state.weekItems.map(items => {
 
-        if (items.type === 'week5') {
-          return <li> {items.name} </li>
+        if (items.type === 'week5' && items.isEditing === false) {
+          return <li onClick={ (e) => this.handleListEdit(e, items.name) }> {items.name} </li>
+        } 
+        else if (items.type === 'week5' && items.isEditing === true) {
+          return <input class="listInput" onKeyUp={ (e) => this.handleOnEnter(e, items.name)} defaultValue={items.name} /> 
         }
         
       })
 
       let listItemWeek6 = this.state.weekItems.map(items => {
 
-        if (items.type === 'week6') {
-          return <li> {items.name} </li>
+        if (items.type === 'week6' && items.isEditing === false) {
+          return <li onClick={ (e) => this.handleListEdit(e, items.name) }> {items.name} </li>
+        } 
+        else if (items.type === 'week6' && items.isEditing === true) {
+          return <input class="listInput" onKeyUp={ (e) => this.handleOnEnter(e, items.name)} defaultValue={items.name} /> 
         }
         
       })
       
       let listItemWeek7 = this.state.weekItems.map(items => {
 
-        if (items.type === 'week7') {
-          return <li> {items.name} </li>
+        if (items.type === 'week7' && items.isEditing === false) {
+          return <li onClick={ (e) => this.handleListEdit(e, items.name) }> {items.name} </li>
+        } 
+        else if (items.type === 'week7' && items.isEditing === true) {
+          return <input class="listInput" onKeyUp={ (e) => this.handleOnEnter(e, items.name)} defaultValue={items.name} /> 
         }
         
       })
@@ -131,7 +159,7 @@ class Schedule extends React.Component {
           <main>
           
             <div className="weekTitle">
-              <h3> {this.props.week ? "Week 1": "Week 2"}: {this.props.category}</h3>   
+              <h3> {this.props.week ? "Week 1": "Week 2"}: {this.props.category} </h3>   
             </div>
             
             <div className="Main-content">
@@ -139,10 +167,7 @@ class Schedule extends React.Component {
 
             <div className="Monday Goals">
 
-              <div className="goalTitle">
-                  <h3> Monday </h3>
-                  <button onClick={this.addListItem}> + </button>
-              </div>
+              <AddToList day="Monday" handleSubmit={this.addListItem} /> 
 
               <div className="Goal-box">
 
@@ -156,10 +181,7 @@ class Schedule extends React.Component {
 
             <div className="Tuesday Goals">
 
-              <div className="goalTitle">
-                <h3> Tuesday </h3>
-                <button> + </button>
-              </div>
+            <AddToList day="Tuesday" handleSubmit={this.addListItem} />
 
                 <div className="Goal-box">
 
@@ -173,10 +195,7 @@ class Schedule extends React.Component {
 
             <div className="Wednesday Goals">
 
-              <div className="goalTitle">
-                <h3> Wednesday </h3>
-                <button> + </button>
-              </div>
+            <AddToList day="Wednesday" handleSubmit={this.addListItem} />
 
                 <div className="Goal-box">
 
@@ -190,10 +209,7 @@ class Schedule extends React.Component {
 
             <div className="Thursday Goals">
 
-            <div className="goalTitle">
-                <h3>Thursday</h3>
-                <button> + </button>
-            </div>
+            <AddToList day="Thursday" handleSubmit={this.addListItem} />
 
                 <div className="Goal-box">
 
@@ -205,12 +221,9 @@ class Schedule extends React.Component {
 
               </div>
 
-              <div className="Friday Goals">
+              <div className="Friday Goals" handleSubmit={this.addListItem}>
 
-                <div className="goalTitle">
-                  <h3> Friday </h3>
-                  <button> + </button>
-                </div>
+              <AddToList day="Friday" handleSubmit={this.addListItem} />
               
 
                 <div className="Goal-box">
@@ -225,10 +238,7 @@ class Schedule extends React.Component {
 
             <div className="Saturday Goals">
 
-              <div className="goalTitle">
-                <h3> Saturday </h3>
-                <button> + </button>
-              </div>
+            <AddToList day="Saturday" handleSubmit={this.addListItem} />
               
 
                 <div className="Goal-box">
@@ -243,10 +253,7 @@ class Schedule extends React.Component {
 
             <div className="Sunday Goals">
 
-              <div className="goalTitle">
-                <h3> Sunday </h3>
-                <button> + </button>
-              </div>
+            <AddToList day="Sunday" handleSubmit={this.addListItem} />
 
                 <div className="Goal-box">
 

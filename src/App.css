@@ -136,6 +136,10 @@
   display: table;
 }
 
+.listInput {
+  background-color: rgb(230, 255, 206);
+  border: none;
+}
 
 
 
