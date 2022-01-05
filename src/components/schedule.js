@@ -36,17 +36,34 @@ class Schedule extends React.Component {
     
 
 
-    handleListEdit(event) {
+    handleListEdit(event, name) {
 
       console.log(event.target);
       
-      this.setState(prevState =>  ({
-        weekItems: {...prevState.weekItems}
-      }));
+      // this.setState(prevState =>  ({
+      //   weekItems: {...prevState.weekItems}
+      // }));
+
+      this.setState((prevState) => ({
+        weekItems: prevState.weekItems.map((item) =>
+          item.name === name ? {...item, isEditing: !item.isEditing } : item
+        ),
+      }))
      
 
       console.log(this.state.weekItems)
     }
+
+    handleOnEnter(event) {
+
+      //console.log("ENTER", event);
+
+      if (event.charCode === 13) {
+        console.log('WOOT')
+      }
+
+    }
+
     
     render () {
 
@@ -61,10 +78,10 @@ class Schedule extends React.Component {
       let listItemWeek2 = this.state.weekItems.map(items => {
 
         if (items.type === 'week2' && items.isEditing === false) {
-          return <li onClick={ (e) => this.handleListEdit(e) }> {items.name} </li>
+          return <li onClick={ (e) => this.handleListEdit(e, items.name) }> {items.name} </li>
         } 
         else if (items.type === 'week2' && items.isEditing === true) {
-          return <input value={items.name} /> 
+          return <input onKeyUp={ (e) => this.handleOnEnter(e)} defaultValue={items.name} /> 
         }
         
       })
